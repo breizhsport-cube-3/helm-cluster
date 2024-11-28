@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-breizhsport-config
+  namespace: argo-kube-test
+data:
+  

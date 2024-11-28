@@ -1,0 +1,17 @@
+postgres:
+  version: "13.16"
+  replicas: 2
+  dbName: "Breizhsport"
+  port: 5432
+  user: "postgresUser"
+  password: "1234"
+  storage: "4Gi"
+ingress:
+  globalPort: 8080
+express:
+  replicas: 2
+node: 
+  version: "20-alpine"
+  port: 3001
+api:
+  githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"

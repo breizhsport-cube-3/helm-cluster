@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: build-breizhsport-api
+  namespace: argo-kube-test
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: docker-build
+        image: docker:20.10.24-dind  # Docker-in-Docker
+        command: ["sh", "-c"]
+        args:
+        - |
+          apk add --no-cache git &&
+          git clone -b develop {{ .Values.api.githubLink }} /app/breizhsport-server &&
+          cd /app/breizhsport-server &&
+          docker build -t breizhsport-server:local . &&
+          echo "Build complete"
+        volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run/docker.sock  # Monture du socket Docker local
+      restartPolicy: Never
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock  # Utiliser le démon Docker de Minikube
+          type: Socket
