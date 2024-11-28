@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-db-job
-  namespace: argo-kube-test
+  namespace: cube-3
 spec:
   template:
     spec:

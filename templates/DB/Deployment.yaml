@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-deployment
-  namespace: argo-kube-test
+  namespace: cube-3
 spec:
   replicas: {{ .Values.postgres.replicas }}
   selector:

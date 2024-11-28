@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: build-breizhsport-api
-  namespace: argo-kube-test
+  namespace: cube-3
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: docker-build
-        image: docker:20.10.24-dind  # Docker-in-Docker
+        image: docker:20.10.24-dind
         command: ["sh", "-c"]
         args:
         - |
@@ -21,10 +21,10 @@ spec:
           echo "Build complete"
         volumeMounts:
         - name: docker-socket
-          mountPath: /var/run/docker.sock  # Monture du socket Docker local
+          mountPath: /var/run/docker.sock
       restartPolicy: Never
       volumes:
       - name: docker-socket
         hostPath:
-          path: /var/run/docker.sock  # Utiliser le démon Docker de Minikube
+          path: /var/run/docker.sock
           type: Socket
