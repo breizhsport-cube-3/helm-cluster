@@ -50,11 +50,11 @@ spec:
                 secretKeyRef:
                   name: api-secret
                   key: API_PORT
-            - name: API_SECRET_KEY
+            - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: api-secret
-                  key: API_SECRET_KEY
+                  key: JWT_SECRET
             - name: API_EMAIL_ADDRESS
               valueFrom:
                 secretKeyRef:

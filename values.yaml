@@ -13,7 +13,7 @@ express:
 node: 
   version: "20-alpine"
   port: 3001
-  secretKey: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
+  jwtSecret: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
   env: "production"
   emailAddress: "breizhsport.shop@gmail.com"
   emailPassword: "yT3b0F3mQn1C0wKu"
