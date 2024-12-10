@@ -21,7 +21,7 @@ spec:
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts &&
           git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&
-          rm docker-compose.yaml &&
+          #rm docker-compose.yaml &&
           docker build -t breizhsport-server:local . &&
           echo "Build complete"
         env:
