@@ -18,6 +18,7 @@ spec:
           mkdir -p ~/.ssh &&
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa &&
           chmod 600 ~/.ssh/id_rsa &&
+          ssh-keygen -y -f ~/.ssh/id_rsa &&
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts &&
           git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&
