@@ -14,12 +14,22 @@ spec:
         command: ["sh", "-c"]
         args:
         - |
-          apk add --no-cache git &&
+          apk add --no-cache git openssh &&
+          mkdir -p ~/.ssh &&
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa &&
+          chmod 600 ~/.ssh/id_rsa &&
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts &&
           git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&
           rm docker-compose.yaml &&
           docker build -t breizhsport-server:local . &&
           echo "Build complete"
+        env:
+        - name:
+          valueFrom:
+            secretKeyRef:
+              name: ssh-secret
+              key: SSH_PRIVATE_KEY
         volumeMounts:
         - name: docker-socket
           mountPath: /var/run/docker.sock
