@@ -25,7 +25,7 @@ spec:
           docker build -t breizhsport-server:local . &&
           echo "Build complete"
         env:
-          - name:
+          - name: SSH_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
                 name: ssh-secret
