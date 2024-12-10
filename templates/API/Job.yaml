@@ -25,11 +25,11 @@ spec:
           docker build -t breizhsport-server:local . &&
           echo "Build complete"
         env:
-        - name:
-          valueFrom:
-            secretKeyRef:
-              name: ssh-secret
-              key: SSH_PRIVATE_KEY
+          - name:
+            valueFrom:
+              secretKeyRef:
+                name: ssh-secret
+                key: SSH_PRIVATE_KEY
         volumeMounts:
         - name: docker-socket
           mountPath: /var/run/docker.sock
