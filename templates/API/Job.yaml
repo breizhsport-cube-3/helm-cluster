@@ -14,13 +14,7 @@ spec:
         command: ["sh", "-c"]
         args:
         - |
-          apk add --no-cache git openssh-client &&
-          mkdir -p ~/.ssh &&
-          echo "$SSH_PRIVATE_KEY" &&
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa &&
-          chmod 600 ~/.ssh/id_rsa &&
-          eval `ssh-agent -s` &&
-          ssh-add ~/.ssh/id_rsa &&
+          apk add --no-cache git &&
           git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&
           #rm docker-compose.yaml &&
