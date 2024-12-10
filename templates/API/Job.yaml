@@ -20,32 +20,30 @@ spec:
           # Création du répertoire SSH
           mkdir -p ~/.ssh &&
           
-          # Débogage : afficher le contenu de la variable SSH_PRIVATE_KEY
-          echo "Contenu de SSH_PRIVATE_KEY (début) :" &&
-          echo "$SSH_PRIVATE_KEY" | cut -c1-50 &&
+          # Débogage complet
+          echo "Début du débogage SSH" &&
+          echo "Contenu brut de SSH_PRIVATE_KEY :" &&
+          echo "$SSH_PRIVATE_KEY" &&
           
-          # Décodage et sauvegarde de la clé
+          # Décodage correct
           echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_rsa &&
           
-          # Vérification des permissions et du contenu
+          # Vérifications
           chmod 600 ~/.ssh/id_rsa &&
           ls -l ~/.ssh/id_rsa &&
-          head -n 1 ~/.ssh/id_rsa &&
+          cat ~/.ssh/id_rsa &&
           
-          # Tentative de conversion de la clé
-          ssh-keygen -p -m PEM -f ~/.ssh/id_rsa -N '' 2>&1 ||
-          
-          # Si la conversion échoue, afficher plus de détails
-          (echo "Erreur de conversion de clé" && cat ~/.ssh/id_rsa) &&
-          
-          # Test de la clé SSH
-          ssh-keygen -y -f ~/.ssh/id_rsa &&
+          # Vérification du format de la clé
+          ssh-keygen -l -f ~/.ssh/id_rsa &&
           
           # Ajout des hôtes connus
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts &&
           
+          # Test de connexion SSH
+          ssh -T git@github.com || true &&
+          
           # Clonage du dépôt
-          GIT_SSH_COMMAND="ssh -v" git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
+          GIT_SSH_COMMAND="ssh -vvv" git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           
           # Construction de l'image
           cd /app/breizhsport-server &&
