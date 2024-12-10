@@ -14,39 +14,14 @@ spec:
         command: ["sh", "-c"]
         args:
         - |
-          # Installation des paquets nécessaires
-          apk add --no-cache git openssh-client openssl &&
-          
-          # Création du répertoire SSH
+          apk add --no-cache git openssh-client &&
           mkdir -p ~/.ssh &&
-          
-          # Débogage complet
-          echo "Début du débogage SSH" &&
-          echo "Contenu brut de SSH_PRIVATE_KEY :" &&
-          echo "$SSH_PRIVATE_KEY" &&
-          
-          # Décodage correct
-          echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_rsa &&
-          
-          # Vérifications
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa &&
           chmod 600 ~/.ssh/id_rsa &&
-          ls -l ~/.ssh/id_rsa &&
-          cat ~/.ssh/id_rsa &&
-          
-          # Vérification du format de la clé
-          ssh-keygen -l -f ~/.ssh/id_rsa &&
-          
-          # Ajout des hôtes connus
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts &&
-          
-          # Test de connexion SSH
-          ssh -T git@github.com || true &&
-          
-          # Clonage du dépôt
-          GIT_SSH_COMMAND="ssh -vvv" git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
-          
-          # Construction de l'image
+          git clone -b {{ .Values.api.branch }} {{ .Values.api.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&
+          #rm docker-compose.yaml &&
           docker build -t breizhsport-server:local . &&
           echo "Build complete"
         env:
