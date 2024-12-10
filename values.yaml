@@ -19,5 +19,5 @@ node:
   emailPassword: "yT3b0F3mQn1C0wKu"
   frontEndUrl: "http://lienverslesiteachanger.fr"
 api:
-  githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
+  githubLink: "git@github.com:breizhsport-cube-3/breizhsport-server.git"
   branch: "feature/12-authentification"
