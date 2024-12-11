@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: docker-build
-        image: docker:20.10.24-dind
+        image: "docker:{{ .Values.docker.version }}"
         command: ["sh", "-c"]
         args:
         - |

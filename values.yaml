@@ -21,3 +21,5 @@ node:
 api:
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
   branch: "develop"
+docker:
+  version: "27.4.0-dind"
