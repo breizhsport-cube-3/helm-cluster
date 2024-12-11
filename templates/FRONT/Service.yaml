@@ -4,10 +4,9 @@ metadata:
   name: {{ .Release.Name }}-front-external-service
   namespace: {{ .Release.Namespace }}
 spec:
-  type: LoadBalancer
   selector:
     app: {{ .Release.Name }}-front
   ports:
-    - name: external-front-port
+    - protocol: TCP
       port: {{ .Values.front.port }}
       targetPort: {{ .Values.front.port }}
