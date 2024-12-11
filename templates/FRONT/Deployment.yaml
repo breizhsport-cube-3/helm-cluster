@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  namespace: cube-3
+spec:
+  replicas: {{ .Values.front.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-front
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-front
+    spec:
+      containers:
+        - name: front-container
+          image: "breizhsport-front:local"
+          ports:
+            - containerPort: {{ .Values.front.port }}
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

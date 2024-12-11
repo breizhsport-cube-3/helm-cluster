@@ -23,3 +23,8 @@ api:
   branch: "develop"
 docker:
   version: "27.4.0-dind"
+front:
+  githubLink: "https://github.com/breizhsport-cube-3/breizhsport-app.git"
+  branch: "develop"
+  port: "80"
+  replicas: 2
