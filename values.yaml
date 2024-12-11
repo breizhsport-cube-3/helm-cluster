@@ -20,4 +20,4 @@ node:
   frontEndUrl: "http://lienverslesiteachanger.fr"
 api:
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
-  branch: "feature/12-authentification"
+  branch: "develop"
