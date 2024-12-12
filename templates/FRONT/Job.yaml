@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: build-breizhsport-frontEnd
+  name: build-breizhsport-front-end
   namespace: cube-3
   annotations:
     argocd.argoproj.io/hook: PreSync
