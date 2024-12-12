@@ -28,3 +28,4 @@ front:
   branch: "develop"
   port: "80"
   replicas: 2
+  link: "breizhsport.fr"

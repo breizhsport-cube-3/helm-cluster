@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: breizhsport.local
+    - host: {{ .Values.front.link }}
       http:
         paths:
           - path: /
