@@ -15,9 +15,9 @@ spec:
         args:
         - |
           apk add --no-cache git &&
-          git clone -b {{ .Values.frontEnd.branch }} {{ .Values.frontEnd.githubLink }} /app/breizhsport-frontEnd &&
-          cd /app/breizhsport-frontEnd &&
-          docker build -t breizhsport-frontEnd:local . &&
+          git clone -b {{ .Values.front-end.branch }} {{ .Values.front-end.githubLink }} /app/breizhsport-front-end &&
+          cd /app/breizhsport-front-end &&
+          docker build -t breizhsport-front-end:local . &&
           echo "Build complete"
         volumeMounts:
         - name: docker-socket

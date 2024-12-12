@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dataBase-deployment
+  name: data-base-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.dataBase.replicas }}
+  replicas: {{ .Values.data-base.replicas }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-database
+      app: {{ .Release.Name }}-data-base
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-database
+        app: {{ .Release.Name }}-data-base
     spec:
       containers:
-        - name: dataBase
-          image: "{ .Values.dataBase.version }}"
+        - name: data-base
+          image: "{ .Values.data-base.version }}"
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.dataBase.port }}
+            - containerPort: {{ .Values.data-base.port }}
           envFrom:
             - secretRef:
-                name: dataBase-secret
+                name: data-base-secret
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdata

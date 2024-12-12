@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-frontEnd-external-service
+  name: {{ .Release.Name }}-front-end-external-service
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
-    app: {{ .Release.Name }}-frontEnd
+    app: {{ .Release.Name }}-front-end
   ports:
     - protocol: TCP
-      port: {{ .Values.frontEnd.port }}
-      targetPort: {{ .Values.frontEnd.port }}
+      port: {{ .Values.front-end.port }}
+      targetPort: {{ .Values.front-end.port }}

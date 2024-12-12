@@ -1,34 +1,34 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-dataBase-job
+  name: create-data-base-job
   namespace: cube-3
 spec:
   template:
     spec:
       containers:
       - name: create-db
-        image: "{{ .Values.dataBase.version }}"
+        image: "{{ .Values.data-base.version }}"
         env:
         - name: PGPASSWORD
           valueFrom:
             secretKeyRef:
-              name: dataBase-secret 
+              name: data-base-secret 
               key: POSTGRES_PASSWORD
         command: ["/bin/sh", "-c"]
         args:
           - |
             echo "Listing databases :"
-            psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -c "\l"
+            psql -h {{ .Release.Name }}-data-base-internal-service -U {{ .Values.data-base.user }} -p {{ .Values.data-base.port }} -d postgres -c "\l"
 
-            DB_EXISTS=$(psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='{{ .Values.dataBase.dbName }}'")
+            DB_EXISTS=$(psql -h {{ .Release.Name }}-data-base-internal-service -U {{ .Values.data-base.user }} -p {{ .Values.data-base.port }} -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='{{ .Values.data-base.dbName }}'")
             if [ -z "$DB_EXISTS" ]; then
-              echo "Creating '{{ .Values.dataBase.dbName }}' database"
-              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -c "CREATE DATABASE \"{{ .Values.dataBase.dbName }}\""
+              echo "Creating '{{ .Values.data-base.dbName }}' database"
+              psql -h {{ .Release.Name }}-data-base-internal-service -U {{ .Values.data-base.user }} -p {{ .Values.data-base.port }} -d postgres -c "CREATE DATABASE \"{{ .Values.data-base.dbName }}\""
             else
-              echo "Database '{{ .Values.dataBase.dbName }}' already exists."
-              echo "Content of '{{ .Values.dataBase.dbName }}' database :"
-              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d {{ .Values.dataBase.dbName }} -c "\dt"
+              echo "Database '{{ .Values.data-base.dbName }}' already exists."
+              echo "Content of '{{ .Values.data-base.dbName }}' database :"
+              psql -h {{ .Release.Name }}-data-base-internal-service -U {{ .Values.data-base.user }} -p {{ .Values.data-base.port }} -d {{ .Values.data-base.dbName }} -c "\dt"
             fi
 
         volumeMounts:
