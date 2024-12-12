@@ -1,4 +1,4 @@
-data-base:
+dataBase:
   version: "postgres:14.15-alpine"
   replicas: 2
   dbName: "Breizhsport"
@@ -6,7 +6,7 @@ data-base:
   user: "postgresUser"
   password: "1234"
   storage: "4Gi"
-back-end: 
+backEnd: 
   port: 3001
   jwtSecret: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
   env: "production"
@@ -16,7 +16,7 @@ back-end:
   replicas: 2
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
   branch: "develop"
-front-end:
+frontEnd:
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-app.git"
   branch: "develop"
   port: "80"

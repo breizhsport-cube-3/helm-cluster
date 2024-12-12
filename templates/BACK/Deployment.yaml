@@ -4,7 +4,7 @@ metadata:
   name: back-end-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.back-end.replicas }}
+  replicas: {{ .Values.backEnd.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-back-end
@@ -17,7 +17,7 @@ spec:
         - name: back-end-container
           image: "breizhsport-server:local"
           ports:
-            - containerPort: {{ .Values.back-end.port }}
+            - containerPort: {{ .Values.backEnd.port }}
           resources:
             limits:
               memory: "512Mi"

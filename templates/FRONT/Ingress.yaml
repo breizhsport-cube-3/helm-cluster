@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: {{ .Values.front-end.link }}
+    - host: {{ .Values.frontEnd.link }}
       http:
         paths:
           - path: /
@@ -17,4 +17,4 @@ spec:
               service:
                 name: {{ .Release.Name }}-front-end-external-service
                 port:
-                  number: {{ .Values.front-end.port }}
+                  number: {{ .Values.frontEnd.port }}

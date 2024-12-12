@@ -9,5 +9,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.data-base.storage }}
+      storage: {{ .Values.dataBase.storage }}
   

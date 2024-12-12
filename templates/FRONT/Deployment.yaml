@@ -4,7 +4,7 @@ metadata:
   name: front-end-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.front-end.replicas }}
+  replicas: {{ .Values.frontEnd.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-front-end
@@ -17,7 +17,7 @@ spec:
         - name: front-end-container
           image: "breizhsport-front-end:local"
           ports:
-            - containerPort: {{ .Values.front-end.port }}
+            - containerPort: {{ .Values.frontEnd.port }}
           resources:
             limits:
               memory: "512Mi"

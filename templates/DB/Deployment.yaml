@@ -4,7 +4,7 @@ metadata:
   name: data-base-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.data-base.replicas }}
+  replicas: {{ .Values.dataBase.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-data-base
@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
         - name: data-base
-          image: "{ .Values.data-base.version }}"
+          image: "{ .Values.dataBase.version }}"
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.data-base.port }}
+            - containerPort: {{ .Values.dataBase.port }}
           envFrom:
             - secretRef:
                 name: data-base-secret

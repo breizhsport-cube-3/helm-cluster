@@ -8,7 +8,7 @@ metadata:
     app: data-base
 spec:
   capacity:
-    storage: {{ .Values.data-base.storage }}
+    storage: {{ .Values.dataBase.storage }}
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
