@@ -5,13 +5,13 @@ metadata:
   namespace: cube-3
   labels:
     type: local
-    app: postgres
+    app: dataBase
 spec:
   capacity:
-    storage: {{ .Values.postgres.storage }}
+    storage: {{ .Values.dataBase.storage }}
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/postgres/breizhsport
+    path: /data/dataBase/breizhsport
   

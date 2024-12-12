@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-db-job
+  name: create-dataBase-job
   namespace: cube-3
 spec:
   template:
@@ -13,22 +13,22 @@ spec:
         - name: PGPASSWORD
           valueFrom:
             secretKeyRef:
-              name: postgres-secret 
+              name: dataBase-secret 
               key: POSTGRES_PASSWORD
         command: ["/bin/sh", "-c"]
         args:
           - |
             echo "Listing databases :"
-            psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.postgres.user }} -p {{ .Values.postgres.port }} -d postgres -c "\l"
+            psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -c "\l"
 
-            DB_EXISTS=$(psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.postgres.user }} -p {{ .Values.postgres.port }} -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='{{ .Values.postgres.dbName }}'")
+            DB_EXISTS=$(psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='{{ .Values.dataBase.dbName }}'")
             if [ -z "$DB_EXISTS" ]; then
-              echo "Creating '{{ .Values.postgres.dbName }}' database"
-              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.postgres.user }} -p {{ .Values.postgres.port }} -d postgres -c "CREATE DATABASE \"{{ .Values.postgres.dbName }}\""
+              echo "Creating '{{ .Values.dataBase.dbName }}' database"
+              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d postgres -c "CREATE DATABASE \"{{ .Values.dataBase.dbName }}\""
             else
-              echo "Database '{{ .Values.postgres.dbName }}' already exists."
-              echo "Content of '{{ .Values.postgres.dbName }}' database :"
-              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.postgres.user }} -p {{ .Values.postgres.port }} -d {{ .Values.postgres.dbName }} -c "\dt"
+              echo "Database '{{ .Values.dataBase.dbName }}' already exists."
+              echo "Content of '{{ .Values.dataBase.dbName }}' database :"
+              psql -h {{ .Release.Name }}-database-internal-service -U {{ .Values.dataBase.user }} -p {{ .Values.dataBase.port }} -d {{ .Values.dataBase.dbName }} -c "\dt"
             fi
 
         volumeMounts:

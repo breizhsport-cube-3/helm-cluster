@@ -3,11 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: cube-3-storage-pvc
   labels:
-    app: postgres
+    app: dataBase
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.postgres.storage }}
+      storage: {{ .Values.dataBase.storage }}
   

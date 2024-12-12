@@ -9,8 +9,8 @@ spec:
     app: {{ .Release.Name }}-database
   ports:
     - name: internal-db-port
-      port: {{ .Values.postgres.port }}
-      targetPort: {{ .Values.postgres.port }}
+      port: {{ .Values.dataBase.port }}
+      targetPort: {{ .Values.dataBase.port }}
 ---
 apiVersion: v1
 kind: Service
@@ -23,5 +23,5 @@ spec:
     app: {{ .Release.Name }}-database
   ports:
     - name: external-db-port
-      port: {{ .Values.postgres.port }}
-      targetPort: {{ .Values.postgres.port }}
+      port: {{ .Values.dataBase.port }}
+      targetPort: {{ .Values.dataBase.port }}

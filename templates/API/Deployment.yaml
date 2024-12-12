@@ -4,7 +4,7 @@ metadata:
   name: api-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.express.replicas }}
+  replicas: {{ .Values.backEnd.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-api
@@ -17,7 +17,7 @@ spec:
         - name: api-container
           image: "breizhsport-server:local"
           ports:
-            - containerPort: {{ .Values.node.port }}
+            - containerPort: {{ .Values.backEnd.port }}
           resources:
             limits:
               memory: "512Mi"

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-deployment
+  name: frontEnd-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.front.replicas }}
+  replicas: {{ .Values.frontEnd.replicas }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-front
+      app: {{ .Release.Name }}-frontEnd
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-front
+        app: {{ .Release.Name }}-frontEnd
     spec:
       containers:
-        - name: front-container
-          image: "breizhsport-front:local"
+        - name: frontEnd-container
+          image: "breizhsport-frontEnd:local"
           ports:
-            - containerPort: {{ .Values.front.port }}
+            - containerPort: {{ .Values.frontEnd.port }}
           resources:
             limits:
               memory: "512Mi"

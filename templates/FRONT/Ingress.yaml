@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-front-ingress
+  name: {{ .Release.Name }}-frontEnd-ingress
   namespace: cube-3
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: {{ .Values.front.link }}
+    - host: {{ .Values.frontEnd.link }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-front-external-service
+                name: {{ .Release.Name }}-frontEnd-external-service
                 port:
-                  number: {{ .Values.front.port }}
+                  number: {{ .Values.frontEnd.port }}

@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deployment
+  name: dataBase-deployment
   namespace: cube-3
 spec:
-  replicas: {{ .Values.postgres.replicas }}
+  replicas: {{ .Values.dataBase.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-database
@@ -14,14 +14,14 @@ spec:
         app: {{ .Release.Name }}-database
     spec:
       containers:
-        - name: postgres
-          image: "postgres:{{ .Values.postgres.version }}"
+        - name: dataBase
+          image: "{ .Values.dataBase.version }}"
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.postgres.port }}
+            - containerPort: {{ .Values.dataBase.port }}
           envFrom:
             - secretRef:
-                name: postgres-secret
+                name: dataBase-secret
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdata

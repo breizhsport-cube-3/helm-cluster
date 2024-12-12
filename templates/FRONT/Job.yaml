@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: build-breizhsport-front
+  name: build-breizhsport-frontEnd
   namespace: cube-3
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -15,9 +15,9 @@ spec:
         args:
         - |
           apk add --no-cache git &&
-          git clone -b {{ .Values.front.branch }} {{ .Values.front.githubLink }} /app/breizhsport-front &&
-          cd /app/breizhsport-front &&
-          docker build -t breizhsport-front:local . &&
+          git clone -b {{ .Values.frontEnd.branch }} {{ .Values.frontEnd.githubLink }} /app/breizhsport-frontEnd &&
+          cd /app/breizhsport-frontEnd &&
+          docker build -t breizhsport-frontEnd:local . &&
           echo "Build complete"
         volumeMounts:
         - name: docker-socket

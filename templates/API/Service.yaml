@@ -8,5 +8,5 @@ spec:
   selector:
     app: {{ .Release.Name }}-api
   ports:
-  - port: {{ .Values.node.port }}
-    targetPort: {{ .Values.node.port }}
+  - port: {{ .Values.backEnd.port }}
+    targetPort: {{ .Values.backEnd.port }}

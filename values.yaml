@@ -1,16 +1,12 @@
-postgres:
-  version: "13.16"
+dataBase:
+  version: "postgres:13.16"
   replicas: 2
   dbName: "Breizhsport"
   port: 5432
   user: "postgresUser"
   password: "1234"
   storage: "4Gi"
-ingress:
-  globalPort: 8080
-express:
-  replicas: 2
-node: 
+backEnd: 
   version: "20-alpine"
   port: 3001
   jwtSecret: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
@@ -18,14 +14,16 @@ node:
   emailAddress: "breizhsport.shop@gmail.com"
   emailPassword: "yT3b0F3mQn1C0wKu"
   frontEndUrl: "http://lienverslesiteachanger.fr"
-api:
+  replicas: 2
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
   branch: "develop"
-docker:
-  version: "27.4.0-dind"
-front:
+frontEnd:
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-app.git"
   branch: "develop"
   port: "80"
   replicas: 2
   link: "breizhsport.fr"
+ingress:
+  globalPort: 8080
+docker:
+  version: "27.4.0-dind"
