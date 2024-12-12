@@ -7,13 +7,12 @@ dataBase:
   password: "1234"
   storage: "4Gi"
 backEnd: 
-  version: "20-alpine"
   port: 3001
   jwtSecret: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
   env: "production"
   emailAddress: "breizhsport.shop@gmail.com"
   emailPassword: "yT3b0F3mQn1C0wKu"
-  frontEndUrl: "http://lienverslesiteachanger.fr"
+  frontEndUrl: "http://breizhsport.fr"
   replicas: 2
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
   branch: "develop"
