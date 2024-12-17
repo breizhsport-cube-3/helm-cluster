@@ -11,9 +11,20 @@ spec:
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
+        - name: SSH_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secret
+              key: SSH_KEY
         command: ["sh", "-c"]
         args:
         - |
+          mkdir -p ~/.ssh &&
+          echo "$SSH_KEY" > ~/.ssh/id_rsa &&
+          chmod 600 ~/.ssh/id_rsa &&
+          eval $(ssh-agent -s) &&
+          ssh-add ~/.ssh/id_rsa &&
+          ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
           git clone -b {{ .Values.backEnd.branch }} {{ .Values.backEnd.githubLink }} /app/breizhsport-server &&
           cd /app/breizhsport-server &&

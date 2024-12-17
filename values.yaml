@@ -14,7 +14,8 @@ backEnd:
   emailPassword: "yT3b0F3mQn1C0wKu"
   frontEndUrl: "http://breizhsport.fr"
   replicas: 2
-  githubLink: "https://github.com/breizhsport-cube-3/breizhsport-server.git"
+  githubLink: "git@github.com:breizhsport-cube-3/breizhsport-server.git"
+  sshKey: "KEY_TO_ADD"
   branch: "develop"
 frontEnd:
   githubLink: "https://github.com/breizhsport-cube-3/breizhsport-app.git"
