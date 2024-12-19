@@ -11,6 +11,7 @@ spec:
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
+        env:
         - name: SSH_KEY
           valueFrom:
             secretKeyRef:
