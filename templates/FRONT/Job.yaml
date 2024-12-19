@@ -11,9 +11,21 @@ spec:
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
+        env:
+        - name: SSH_KEY
+          valueFrom:
+            secretKeyRef:
+              name: front-end-secret
+              key: SSH_KEY
         command: ["sh", "-c"]
         args:
         - |
+          mkdir -p ~/.ssh &&
+          echo "$SSH_KEY" > ~/.ssh/id_rsa &&
+          chmod 600 ~/.ssh/id_rsa &&
+          eval $(ssh-agent -s) &&
+          ssh-add ~/.ssh/id_rsa &&
+          ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
           git clone -b {{ .Values.frontEnd.branch }} {{ .Values.frontEnd.githubLink }} /app/breizhsport-front-end &&
           cd /app/breizhsport-front-end &&
