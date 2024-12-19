@@ -14,7 +14,7 @@ spec:
         - name: SSH_KEY
           valueFrom:
             secretKeyRef:
-              name: api-secret
+              name: back-end-secret
               key: SSH_KEY
         command: ["sh", "-c"]
         args:
