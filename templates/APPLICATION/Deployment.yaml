@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: application-deployment
   namespace: cube-3
-automountServiceAccountToken: false
 spec:
   replicas: {{ .Values.application.replicas }}
   selector:
@@ -15,6 +14,7 @@ spec:
         app: {{ .Release.Name }}-application
     spec:
       containers:
+        automountServiceAccountToken: false
         - name: application-container
           image: "breizhsport:local"
           ports:
