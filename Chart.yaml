@@ -1,6 +1,6 @@
 apiVersion: v2
 name: Breizhsport-Cluster
-description: A test structure for cube 3
+description: A structure for cube 3
 type: application
 version: 0.0.1
 appVersion: "1.0.0"

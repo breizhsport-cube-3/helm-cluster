@@ -10,11 +10,11 @@ spec:
       - name: create-db
         image: "{{ .Values.dataBase.version }}"
         env:
-        - name: PGPASSWORD
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: data-base-secret 
-              key: POSTGRES_PASSWORD
+              key: DB_PASSWORD
         command: ["/bin/sh", "-c"]
         args:
           - |

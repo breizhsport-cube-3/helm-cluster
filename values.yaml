@@ -1,30 +1,46 @@
 dataBase:
   version: "postgres:14.15-alpine"
   replicas: 2
-  dbName: "Breizhsport"
+  host: "postgres"
+  dbName: "breizhsport"
   port: 5432
   user: "postgresUser"
   password: "1234"
   storage: "4Gi"
-backEnd: 
-  port: 3001
-  jwtSecret: "gsdfjsdgfhjsdjfsduifysduifhdksfhjdsfgjsdf"
-  env: "production"
-  emailAddress: "breizhsport.shop@gmail.com"
-  emailPassword: "yT3b0F3mQn1C0wKu"
-  frontEndUrl: "http://breizhsport.fr"
+application:
   replicas: 2
-  githubLink: "git@github.com:breizhsport-cube-3/breizhsport-server.git"
+  githubLink: "git@github.com:breizhsport-cube-3/breizhsport.git"
+  branch: "develop"
   sshKey: "LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaVwpReU5UVXhPUUFBQUNDU0ZiV093NHc5RXJwOUVoTGF0SjRVU1FsVHpEa0hOWkFKTEFZd2lxR0l5QUFBQUpoWU04OGpXRFBQCkl3QUFBQXR6YzJndFpXUXlOVFV4T1FBQUFDQ1NGYldPdzR3OUVycDlFaExhdEo0VVNRbFR6RGtITlpBSkxBWXdpcUdJeUEKQUFBRUQ2QVlRc1IzMDZqam0zYUVvaHU2Nm1uUzdua29TUnQxMXlIK1dPb2VRMWtKSVZ0WTdEakQwU3VuMFNFdHEwbmhSSgpDVlBNT1FjMWtBa3NCakNLb1lqSUFBQUFGSFJvYjIxaFFFMVpMVkJETFVkQlRVbE9SeTB5QVE9PQotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0="
-  branch: "develop"
-frontEnd:
-  githubLink: "git@github.com:breizhsport-cube-3/breizhsport-app.git"
-  branch: "develop"
-  port: "80"
-  replicas: 2
-  link: "breizhsport.fr"
-  sshKey: "LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaVwpReU5UVXhPUUFBQUNBNXMxclhEckZQZ3B5ZFVsWHB3M3gvdW5ya3VWS1ZaSFlZbWQ1ampjWGtWd0FBQUpqK2JvSWEvbTZDCkdnQUFBQXR6YzJndFpXUXlOVFV4T1FBQUFDQTVzMXJYRHJGUGdweWRVbFhwdzN4L3Vucmt1VktWWkhZWW1kNWpqY1hrVncKQUFBRUQrcDRGRmhIeCsxU1BVdlUzc3F6YThqczN1TmlvRHAwT2E5SHd6NE1zV09EbXpXdGNPc1UrQ25KMVNWZW5EZkgrNgpldVM1VXBWa2RoaVozbU9OeGVSWEFBQUFGSFJvYjIxaFFFMVpMVkJETFVkQlRVbE9SeTB5QVE9PQotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0="
-ingress:
-  globalPort: 8080
+  
+  name: "Breizhsport"
+  env: "local"
+  dbConnection: "pgsql"
+  key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
+  debug: "true"
+  url: "http://localhost:8000"
+  frontEndUrl: "http://localhost:5173"
+  port: 8000
+  
+  vite:
+    apiUrl: "http://localhost:8000"
+    promotionDays: "true"
+    stripePublicKey: "pk_test_51QIUcCG7OpCM0ihjdpUYiKLYNtCNxodknCEJyY8FaJxRxh1UB6zuHCwu4YBnXxQGhadgPrNKMAl9eqe9VrPErVU50066nrMNzo"
+
+  mail:
+    mailer: "smtp"
+    host: "smtp.gmail.com"
+    port: 465
+    username: "breizhsport.shop@gmail.com"
+    password: "elnk pqxq lybv ibin"
+    encryption: "ssl"
+    fromAdress: "breizhsport.shop@gmail.com"
+    fromName: "BreizhSport"
+    verifyPeer: "false"
+    allowSelfSigned: "true"
+  
+  swagger:
+    generateAlways : "true"
+    constHost: "http://localhost:8000/api"
 docker:
   version: "27.4.0-dind"

@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: build-breizhsport-back-end
+  name: build-breizhsport-application
   namespace: cube-3
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -15,7 +15,7 @@ spec:
         - name: SSH_KEY
           valueFrom:
             secretKeyRef:
-              name: back-end-secret
+              name: application-secret
               key: SSH_KEY
         command: ["sh", "-c"]
         args:
@@ -27,10 +27,10 @@ spec:
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-          git clone -b {{ .Values.backEnd.branch }} {{ .Values.backEnd.githubLink }} /app/breizhsport-server &&
-          cd /app/breizhsport-server &&
+          git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
+          cd /app/breizhsport &&
           #rm docker-compose.yaml &&
-          docker build -t breizhsport-server:local . &&
+          docker build -t breizhsport:local . &&
           echo "Build complete"
         volumeMounts:
         - name: docker-socket
