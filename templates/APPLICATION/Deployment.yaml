@@ -158,3 +158,4 @@ spec:
                 secretKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
+        automountServiceAccountToken: false
