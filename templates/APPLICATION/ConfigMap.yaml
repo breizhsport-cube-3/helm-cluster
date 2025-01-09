@@ -19,7 +19,7 @@ data:
 
   MAIL_MAILER: {{ .Values.application.mail.mailer }}
   MAIL_HOST: {{ .Values.application.mail.host }}
-  MAIL_PORT: {{ .Values.application.mail.port }}
+  MAIL_PORT: {{ .Values.application.mail.port | toString }}
   MAIL_FROM_ADDRESS: {{ .Values.application.mail.fromAdress }}
   MAIL_FROM_NAME: {{ .Values.application.mail.fromName }}
 
