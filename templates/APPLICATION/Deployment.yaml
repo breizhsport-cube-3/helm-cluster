@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: application-deployment
   namespace: cube-3
+automountServiceAccountToken: false
 spec:
   replicas: {{ .Values.application.replicas }}
   selector:
@@ -158,4 +159,3 @@ spec:
                 secretKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
-        automountServiceAccountToken: false
