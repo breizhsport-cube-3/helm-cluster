@@ -13,8 +13,8 @@ spec:
       labels:
         app: {{ .Release.Name }}-application
     spec:
+      automountServiceAccountToken: false
       containers:
-        automountServiceAccountToken: false
         - name: application-container
           image: "breizhsport:local"
           ports:
