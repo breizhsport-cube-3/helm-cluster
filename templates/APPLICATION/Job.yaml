@@ -22,8 +22,8 @@ spec:
         - |
           eval $(ssh-agent -s) &&
           mkdir -p ~/.ssh &&
-          chmod 600 ~/.ssh &&
           echo "$SSH_KEY" >> ~/.ssh/id_rsa &&
+          chmod 700 ~/.ssh &&
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
