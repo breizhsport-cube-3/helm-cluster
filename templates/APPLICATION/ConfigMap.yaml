@@ -4,24 +4,24 @@ metadata:
   name: application-config-map
   namespace: cube-3
 data:
-  APP_NAME: {{ .Values.application.name }}
-  APP_ENV: {{ .Values.application.env }}
-  APP_DEBUG: {{ .Values.application.debug }}
-  APP_URL: {{ .Values.application.url }}
+  APP_NAME: "{{ .Values.application.name }}"
+  APP_ENV: "{{ .Values.application.env }}"
+  APP_DEBUG: "{{ .Values.application.debug }}"
+  APP_URL: "{{ .Values.application.url }}"
 
-  DB_CONNECTION: {{ .Values.application.dbConnection }}
+  DB_CONNECTION: "{{ .Values.application.dbConnection }}"
 
-  VITE_API_URL: {{ .Values.application.vite.apiUrl }}
-  VITE_PROMOTION_DAYS: {{ .Values.application.vite.promotionDays }}
-  VITE_STRIPE_PUBLIC_KEY: {{ .Values.application.vite.stripePublicKey }}
+  VITE_API_URL: "{{ .Values.application.vite.apiUrl }}"
+  VITE_PROMOTION_DAYS: "{{ .Values.application.vite.promotionDays }}"
+  VITE_STRIPE_PUBLIC_KEY: "{{ .Values.application.vite.stripePublicKey }}"
 
-  FRONTEND_URL: {{ .Values.application.frontEndUrl }}
+  FRONTEND_URL: "{{ .Values.application.frontEndUrl }}"
 
-  MAIL_MAILER: {{ .Values.application.mail.mailer }}
-  MAIL_HOST: {{ .Values.application.mail.host }}
-  MAIL_PORT: {{ .Values.application.mail.port | toString }}
-  MAIL_FROM_ADDRESS: {{ .Values.application.mail.fromAdress }}
-  MAIL_FROM_NAME: {{ .Values.application.mail.fromName }}
+  MAIL_MAILER: "{{ .Values.application.mail.mailer }}"
+  MAIL_HOST: "{{ .Values.application.mail.host }}"
+  MAIL_PORT: "{{ .Values.application.mail.port | toString }}"
+  MAIL_FROM_ADDRESS: "{{ .Values.application.mail.fromAdress }}"
+  MAIL_FROM_NAME: "{{ .Values.application.mail.fromName }}"
 
-  L5_SWAGGER_GENERATE_ALWAYS: {{ .Values.application.swagger.generateAlways }}
-  L5_SWAGGER_CONST_HOST: {{ .Values.application.swagger.constHost }}
+  L5_SWAGGER_GENERATE_ALWAYS: "{{ .Values.application.swagger.generateAlways }}"
+  L5_SWAGGER_CONST_HOST: "{{ .Values.application.swagger.constHost }}"
