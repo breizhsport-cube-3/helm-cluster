@@ -4,6 +4,6 @@ metadata:
   name: data-base-config-map
   namespace: cube-3
 data:
-  DB_HOST: {{ .Values.dataBase.host }}
-  DB_DATABASE: {{ .Values.dataBase.dbName }}
-  DB_PORT: {{ .Values.dataBase.port | toString }}
+  DB_HOST: "{{ .Values.dataBase.host }}"
+  DB_DATABASE: "{{ .Values.dataBase.dbName }}"
+  DB_PORT: "{{ .Values.dataBase.port | toString }}"
