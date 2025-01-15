@@ -27,11 +27,9 @@ spec:
           eval $(ssh-agent -s) &&
           ssh-add ~/.ssh/id_rsa &&
           ssh-keygen -lf ~/.ssh/id_rsa &&
-          cat ~/.ssh/id_rsa &&
           ssh -T git@github.com
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-          ssh-add -l &&
           git clone git@github.com:breizhsport-cube-3/breizhsport.git /app/breizhsport
           cd /app/breizhsport &&
           #rm docker-compose.yaml &&
