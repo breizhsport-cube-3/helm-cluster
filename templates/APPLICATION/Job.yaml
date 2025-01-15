@@ -27,7 +27,6 @@ spec:
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-          eval `ssh-agent -s` &&
           ssh-add -l &&
           ssh -T git@github.com &&
           git ls-remote git@github.com:breizhsport-cube-3/breizhsport.git &&
