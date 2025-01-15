@@ -26,6 +26,7 @@ spec:
           chmod 600 ~/.ssh/id_rsa &&
           eval $(ssh-agent -s) &&
           ssh-add ~/.ssh/id_rsa &&
+          ssh-keygen -lf ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
           ssh-add -l &&
