@@ -27,7 +27,7 @@ spec:
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-          git clone -b {{ .Values.backEnd.branch }} {{ .Values.backEnd.githubLink }} /app/breizhsport &&
+          git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
           cd /app/breizhsport &&
           #rm docker-compose.yaml &&
           docker build -t breizhsport:local . &&
