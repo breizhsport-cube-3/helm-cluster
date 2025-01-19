@@ -162,4 +162,4 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["sh", "-c", "yarn install"]
+                command: ["sh", "-c", "chmod -R 777 /var/www && yarn install"]
