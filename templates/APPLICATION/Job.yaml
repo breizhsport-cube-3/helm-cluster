@@ -30,7 +30,7 @@ spec:
           ssh-add -l &&
           git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
           cd /app/breizhsport &&
-          #rm docker-compose.yaml &&
+          rm docker-compose.yaml &&
           docker build -t breizhsport:local . &&
           echo "Build complete"
         volumeMounts:
