@@ -159,3 +159,7 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
+          command: ["sh", "-c"]
+          args:
+            - |
+              echo "Starting application...";
