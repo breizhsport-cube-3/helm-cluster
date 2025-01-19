@@ -162,4 +162,4 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["sh", "-c", "echo 'Application lancée ...'"]
+                command: ["sh", "-c", "yarn install"]
