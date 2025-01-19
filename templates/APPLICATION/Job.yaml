@@ -33,7 +33,7 @@ spec:
           rm docker-compose.yml &&
           docker image prune -f &&
           echo "Old build deleted"
-          docker build -t breizhsport:local . &&
+          docker build -t breizhsport:latest . &&
           echo "Build complete"
         volumeMounts:
         - name: docker-socket
