@@ -4,7 +4,7 @@ dataBase:
   host: "postgres"
   dbName: "breizhsport"
   port: 5432
-  user: "postgresUser"
+  username: "postgresUser"
   password: "1234"
   storage: "4Gi"
 application:
