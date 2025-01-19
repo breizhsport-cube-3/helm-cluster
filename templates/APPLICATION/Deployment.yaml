@@ -162,7 +162,4 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["sh", "-c"]
-                args:
-                  - |
-                    echo "Starting application...";
+                command: ["sh", "-c", "echo 'Application lancée ...'"]
