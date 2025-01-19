@@ -26,12 +26,12 @@ spec:
           env:
             - name: APP_NAME
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: APP_NAME
             - name: APP_ENV
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: APP_ENV
             - name: APP_KEY
@@ -41,47 +41,47 @@ spec:
                   key: APP_KEY
             - name: APP_DEBUG
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: APP_DEBUG
             - name: APP_URL
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: APP_URL
             - name: VITE_API_URL
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: VITE_API_URL
             - name: VITE_PROMOTION_DAYS
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: VITE_PROMOTION_DAYS
             - name: VITE_STRIPE_PUBLIC_KEY
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: VITE_STRIPE_PUBLIC_KEY
             - name: DB_CONNECTION
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: DB_CONNECTION
             - name: DB_HOST
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: data-base-config-map
                   key: DB_HOST
             - name: DB_PORT
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: data-base-config-map
                   key: DB_PORT
             - name: DB_DATABASE
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: data-base-config-map
                   key: DB_DATABASE
             - name: DB_USERNAME
@@ -96,22 +96,22 @@ spec:
                   key: DB_PASSWORD
             - name: FRONTEND_URL
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: FRONTEND_URL
             - name: MAIL_MAILER
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: MAIL_MAILER
             - name: MAIL_HOST
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: MAIL_HOST
             - name: MAIL_PORT
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: MAIL_PORT
             - name: MAIL_USERNAME
@@ -131,12 +131,12 @@ spec:
                   key: MAIL_ENCRYPTION
             - name: MAIL_FROM_ADDRESS
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: MAIL_FROM_ADDRESS
             - name: MAIL_FROM_NAME
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: MAIL_FROM_NAME
             - name: MAIL_VERIFY_PEER
@@ -151,11 +151,11 @@ spec:
                   key: MAIL_ALLOW_SELF_SIGNED
             - name: L5_SWAGGER_GENERATE_ALWAYS
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_GENERATE_ALWAYS
             - name: L5_SWAGGER_CONST_HOST
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
