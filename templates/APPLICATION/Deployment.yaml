@@ -164,7 +164,3 @@ spec:
                 configMapKeyRef:
                   name: data-base-config-map
                   key: DB_SEED
-          lifecycle:
-            postStart:
-              exec:
-                command: ["sh", "-c", "chmod -R 777 /var/www && yarn install"]
