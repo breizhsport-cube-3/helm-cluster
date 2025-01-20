@@ -7,6 +7,7 @@ dataBase:
   username: "postgresUser"
   password: "1234"
   storage: "4Gi"
+  seed: "true"
 application:
   replicas: 2
   githubLink: "git@github.com:breizhsport-cube-3/breizhsport.git"
@@ -21,6 +22,7 @@ application:
   url: "http://localhost:8000"
   frontEndUrl: "http://localhost:5173"
   port: 8000
+  storage: "4Gi"
   
   vite:
     apiUrl: "http://localhost:8000"

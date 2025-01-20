@@ -159,6 +159,11 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
+            - name: DB_SEED
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_SEED
           lifecycle:
             postStart:
               exec:
