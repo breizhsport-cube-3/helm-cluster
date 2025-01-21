@@ -4,8 +4,6 @@ metadata:
   name: application-deployment
   namespace: cube-3
 spec:
-  securityContext:
-    runAsUser: 1000
   replicas: {{ .Values.application.replicas }}
   selector:
     matchLabels:
