@@ -13,8 +13,9 @@ metadata:
       gzip_static on;
       error_log /var/log/nginx/error.log debug;
 spec:
+  ingressClassName: nginx
   rules:
-    - host: laravel.local # Remplacez par votre domaine
+    - host: laravel.local
       http:
         paths:
           - path: /
