@@ -9,9 +9,6 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-buffering: "on"
     nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
     nginx.ingress.kubernetes.io/proxy-buffer-size: "256k"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      gzip_static on;
-      error_log /var/log/nginx/error.log debug;
 spec:
   ingressClassName: nginx
   rules:
