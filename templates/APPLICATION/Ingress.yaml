@@ -19,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: laravel-service
+                name: {{ .Release.Name }}-application-external-service
                 port:
                   number: 80
           - path: /api
