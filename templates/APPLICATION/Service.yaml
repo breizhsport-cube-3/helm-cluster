@@ -8,5 +8,6 @@ spec:
   selector:
     app: {{ .Release.Name }}-application
   ports:
-  - port: {{ .Values.application.port }}
+  - protocol: TCP
+    port: {{ .Values.application.port }}
     targetPort: {{ .Values.application.port }}
