@@ -164,3 +164,8 @@ spec:
                 configMapKeyRef:
                   name: data-base-config-map
                   key: DB_SEED
+            - name: TRUSTED_PROXIES
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: TRUSTED_PROXIES
