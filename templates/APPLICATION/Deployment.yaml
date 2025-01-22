@@ -16,7 +16,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: application-container
-          image: "breizhsport:local"
+          image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
           resources:
