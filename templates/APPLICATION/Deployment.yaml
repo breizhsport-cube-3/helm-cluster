@@ -5,6 +5,10 @@ metadata:
   namespace: cube-3
 spec:
   replicas: {{ .Values.application.replicas }}
+  volumes:
+    - name: nginx-config-volume
+      configMap:
+        name: nginx-config
   selector:
     matchLabels:
       app: {{ .Release.Name }}-application
@@ -169,3 +173,12 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
+
+        - name: nginx
+          image: {{ .Values.nginx.version }}
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf

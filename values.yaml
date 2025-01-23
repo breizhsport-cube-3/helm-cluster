@@ -47,3 +47,5 @@ application:
     constHost: "http://localhost:8000/api"
 docker:
   version: "27.4.0-dind"
+nginx:
+  version: "nginx:1.27.3"
