@@ -17,11 +17,12 @@ spec:
       volumes:
         - name: shared-files
           emptyDir: {}
+
       containers:
         - name: application-container
           volumeMounts:
-          - name: shared-files
-            mountPath: /var/www/public
+            - name: shared-files
+              mountPath: /var/www/public
           image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
@@ -175,10 +176,11 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "cp -r /app/. /var/www/public"]
+
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "cp -r /app/. /var/www/public"]
 
         - name: nginx
           image: {{ .Values.nginx.version }}
