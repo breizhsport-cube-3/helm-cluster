@@ -22,6 +22,9 @@ spec:
           emptyDir: {}
       containers:
         - name: application-container
+          volumeMounts:
+          - name: app-volume
+            mountPath: /var/www
           image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
@@ -179,8 +182,8 @@ spec:
         - name: nginx
           image: {{ .Values.nginx.version }}
           volumeMounts:
-            - name: shared-files
-              mountPath: /var/www/html
+            - name: app-volume
+              mountPath: /var/www
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
