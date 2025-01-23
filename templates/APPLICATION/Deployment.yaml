@@ -20,13 +20,12 @@ spec:
         - name: nginx-config-volume
           configMap:
             name: nginx-config-map
-
       containers:
-        - name: application-container
+        - image: breizhsport:latest
+          name: application-container
           volumeMounts:
             - name: shared-files
               mountPath: /var/www/public
-          image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
           resources:
