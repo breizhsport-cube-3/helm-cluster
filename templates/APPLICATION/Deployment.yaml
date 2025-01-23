@@ -21,7 +21,7 @@ spec:
           configMap:
             name: nginx-config-map
       containers:
-        - image: breizhsport:latest
+        - image: breizhsport:local
           name: application-container
           volumeMounts:
             - name: shared-files
