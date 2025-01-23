@@ -4,6 +4,8 @@ metadata:
   name: nginx-config-map
 data:
   nginx.conf: |
+    events {
+    }
     http {
       server {
         listen 80;
