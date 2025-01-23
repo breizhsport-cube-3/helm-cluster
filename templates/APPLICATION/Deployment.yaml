@@ -15,16 +15,13 @@ spec:
     spec:
       automountServiceAccountToken: false
       volumes:
-        - name: nginx-config-volume
-          configMap:
-            name: nginx-config-map
         - name: shared-files
           emptyDir: {}
       containers:
         - name: application-container
           volumeMounts:
-          - name: app-volume
-            mountPath: {}
+          - name: shared-files
+            mountPath: /var/www/public
           image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
@@ -178,12 +175,16 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp -r /app/. /var/www/public"]
 
         - name: nginx
           image: {{ .Values.nginx.version }}
           volumeMounts:
-            - name: app-volume
-              mountPath: /var/www
+            - name: shared-files
+              mountPath: /var/www/public
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
