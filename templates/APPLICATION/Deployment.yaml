@@ -24,7 +24,7 @@ spec:
         - name: application-container
           volumeMounts:
           - name: app-volume
-            mountPath: /var/www
+            mountPath: {}
           image: "breizhsport:latest"
           ports:
             - containerPort: {{ .Values.application.port }}
