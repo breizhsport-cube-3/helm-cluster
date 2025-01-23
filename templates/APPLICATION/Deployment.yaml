@@ -5,13 +5,6 @@ metadata:
   namespace: cube-3
 spec:
   replicas: {{ .Values.application.replicas }}
-  volumes:
-    - name: nginx-config-volume
-      configMap:
-        name: nginx-config
-    # Create the shared files volume to be used in both pods
-    - name: shared-files
-      emptyDir: {}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-application
@@ -21,6 +14,12 @@ spec:
         app: {{ .Release.Name }}-application
     spec:
       automountServiceAccountToken: false
+      volumes:
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-config-map
+        - name: shared-files
+          emptyDir: {}
       containers:
         - name: application-container
           image: "breizhsport:latest"
