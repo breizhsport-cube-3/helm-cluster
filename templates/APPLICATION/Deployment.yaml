@@ -17,6 +17,9 @@ spec:
       volumes:
         - name: shared-files
           emptyDir: {}
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-config-map
 
       containers:
         - name: application-container
