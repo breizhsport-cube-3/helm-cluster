@@ -9,6 +9,9 @@ spec:
     - name: nginx-config-volume
       configMap:
         name: nginx-config
+    # Create the shared files volume to be used in both pods
+    - name: shared-files
+      emptyDir: {}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-application
