@@ -21,8 +21,9 @@ spec:
       containers:
         - name: application-container
           image: "breizhsport:latest"
+          imagePullPolicy: Never
           volumeMounts:
-            - name: cube-3-application-storage # Volume partagé avec NGINX
+            - name: cube-3-application-storage
               mountPath: /var/www/public
           ports:
             - containerPort: {{ .Values.application.port }}
