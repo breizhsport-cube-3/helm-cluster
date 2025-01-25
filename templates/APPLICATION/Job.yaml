@@ -31,7 +31,6 @@ spec:
           git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
           cd /app/breizhsport &&
           rm docker-compose.yml &&
-          docker image prune -f &&
           echo "Old build deleted"
           docker build -t breizhsport:latest . &&
           echo "Build complete"
