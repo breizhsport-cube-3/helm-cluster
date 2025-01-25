@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: cube-3
+spec:
+  replicas: {{ .Values.nginx.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-nginx
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: {{ .Values.nginx.version }}
+          ports:
+            - containerPort: {{ .Values.nginx.port }}
+          volumeMounts:
+            - name: cube-3-application-storage
+              mountPath: /var/www/public
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: default.conf
+      volumes:
+        - name: cube-3-application-storage
+          persistentVolumeClaim:
+            claimName: cube-3-application-storage-pvc
+        - name: nginx-config-volume
+          hostPath:
+            path: /var/www/docker/nginx/conf.d/default.conf
+            type: File

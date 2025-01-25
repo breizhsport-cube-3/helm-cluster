@@ -39,4 +39,4 @@ spec:
       volumes:
         - name: postgresdata
           persistentVolumeClaim:
-            claimName: cube-3-storage-pvc
+            claimName: cube-3-db-storage-pvc

@@ -15,16 +15,14 @@ spec:
     spec:
       automountServiceAccountToken: false
       volumes:
-        - name: shared-files
-          emptyDir: {}
-        - name: nginx-config-volume
-          configMap:
-            name: nginx-config-map
+        - name: cube-3-application-storage
+          persistentVolumeClaim:
+            claimName: cube-3-application-storage-pvc
       containers:
         - name: application-container
           image: "breizhsport:latest"
           volumeMounts:
-            - name: shared-files
+            - name: cube-3-application-storage # Volume partagé avec NGINX
               mountPath: /var/www/public
           ports:
             - containerPort: {{ .Values.application.port }}
@@ -182,12 +180,3 @@ spec:
             postStart:
               exec:
                 command: ["/bin/sh", "-c", "cp -r /app/. /var/www/public"]
-
-        - name: nginx
-          image: {{ .Values.nginx.version }}
-          volumeMounts:
-            - name: shared-files
-              mountPath: /var/www/public
-            - name: nginx-config-volume
-              mountPath: /etc/nginx/nginx.conf
-              subPath: nginx.conf

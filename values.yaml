@@ -49,3 +49,6 @@ docker:
   version: "27.4.0-dind"
 nginx:
   version: "nginx:1.27.3"
+  replicas: 2
+  port: 80
+  

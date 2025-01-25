@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cube-3-db-storage-pvc
+  name: cube-3-application-storage-pvc
   namespace: cube-3
   labels:
-    app: database
+    app: application
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.dataBase.storage }}
