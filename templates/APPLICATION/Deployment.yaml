@@ -177,7 +177,3 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
-          lifecycle:
-            postStart:
-              exec:
-                command: ["/bin/sh", "-c", "cp -r /app/. /var/www/public"]
