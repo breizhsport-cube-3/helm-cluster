@@ -23,6 +23,7 @@ spec:
               mountPath: /var/www/public
             - name: shared-nginx-config
               mountPath: /etc/nginx/nginx.conf
+              subPath: default.conf
       volumes:
         - name: cube-3-application-storage
           persistentVolumeClaim:
