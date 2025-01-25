@@ -181,7 +181,7 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
-            lifecycle:
-              postStart:
-                exec:
-                  command: ["/bin/sh", "-c", "cp /var/www/docker/nginx/conf.d/default.conf /shared/nginx/conf.d/default.conf"]
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "cp /var/www/docker/nginx/conf.d/default.conf /shared/nginx/conf.d/default.conf"]
