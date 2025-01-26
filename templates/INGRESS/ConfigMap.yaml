@@ -4,3 +4,4 @@ metadata:
   name: ingress-config-map
 data:
   SCRIPT_FILENAME: "/var/www/public/index.php"
+  HTTP_PROXY: ""
