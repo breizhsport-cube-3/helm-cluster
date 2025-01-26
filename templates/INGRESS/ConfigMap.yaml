@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: ingress-config-map
 data:
-  SCRIPT_FILENAME: "/var/www/public/index.php"
+  SCRIPT_FILENAME: "$document_root$fastcgi_script_name"
   HTTP_PROXY: ""

@@ -24,7 +24,6 @@ application:
   port: 9000
   targetPort: 9000
   storage: "4Gi"
-  proxy: "127.0.0.1"
   
   vite:
     apiUrl: "http://localhost:8000"
