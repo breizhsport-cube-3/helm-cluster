@@ -53,3 +53,4 @@ ingress:
 nginx:
   version: "nginx:1.27.3"
   replicas: 2
+  port: 80
