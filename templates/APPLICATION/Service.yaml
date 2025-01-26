@@ -8,4 +8,4 @@ spec:
     app: {{ .Release.Name }}-application
   ports:
   - port: {{ .Values.application.port }}
-    targetPort: {{ .Values.application.port }}
+    targetPort: {{ .Values.application.targetPort }}
