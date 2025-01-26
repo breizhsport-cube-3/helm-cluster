@@ -19,7 +19,7 @@ application:
   dbConnection: "pgsql"
   key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
   debug: "true"
-  url: "http://laravel.local"
+  url: "http://localhost:8000"
   frontEndUrl: "http://localhost:5173"
   port: 8000
   storage: "4Gi"
