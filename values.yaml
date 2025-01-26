@@ -21,7 +21,7 @@ application:
   debug: "true"
   url: "http://laravel.local"
   frontEndUrl: "http://localhost:5173"
-  port: 80
+  port: 8000
   storage: "4Gi"
   proxy: "127.0.0.1"
   
@@ -47,8 +47,6 @@ application:
     constHost: "http://localhost:8000/api"
 docker:
   version: "27.4.0-dind"
-nginx:
-  version: "nginx:1.27.3"
-  replicas: 2
+ingress:
   port: 80
   
