@@ -49,4 +49,7 @@ docker:
   version: "27.4.0-dind"
 ingress:
   port: 80
-  
+
+nginx:
+  version: "nginx:1.27.3"
+  replicas: 2
