@@ -14,21 +14,10 @@ spec:
         app: {{ .Release.Name }}-application
     spec:
       automountServiceAccountToken: false
-      volumes:
-        - name: cube-3-application-storage
-          persistentVolumeClaim:
-            claimName: cube-3-application-storage-pvc
-        - name: shared-nginx-config
-          emptyDir: {}
       containers:
         - name: application-container
           image: "breizhsport:latest"
           imagePullPolicy: Never
-          volumeMounts:
-            - name: cube-3-application-storage
-              mountPath: /var/www/public
-            - name: shared-nginx-config
-              mountPath: /shared/nginx/conf.d
           ports:
             - containerPort: {{ .Values.application.port }}
           resources:
@@ -181,7 +170,3 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
-          lifecycle:
-            postStart:
-              exec:
-                command: ["/bin/sh", "-c", "cp /var/www/docker/nginx/conf.d/default.conf /shared/nginx/conf.d/default.conf"]
