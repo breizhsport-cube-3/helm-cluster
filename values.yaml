@@ -48,7 +48,7 @@ application:
 docker:
   version: "27.4.0-dind"
 ingress:
-  port: 80
+  port: 9000
 
 nginx:
   version: "nginx:1.27.3"

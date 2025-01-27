@@ -4,7 +4,9 @@ metadata:
   name: laravel-ingress
   namespace: cube-3
   annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: "FCGI"
+    nginx.ingress.kubernetes.io/fastcgi-index: "index.php"
     nginx.ingress.kubernetes.io/fastcgi-params-configmap: "ingress-config-map"
 spec:
   ingressClassName: nginx
