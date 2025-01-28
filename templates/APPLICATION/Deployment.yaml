@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["make", "init"]
+          command: ["sh", "-c", "make init && php-fpm -F"]
           resources:
             limits:
               memory: "512Mi"
