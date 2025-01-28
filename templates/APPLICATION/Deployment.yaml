@@ -20,6 +20,7 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
+          command: ["make", "init"]
           resources:
             limits:
               memory: "512Mi"
