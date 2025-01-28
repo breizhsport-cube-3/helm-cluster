@@ -1,7 +1,7 @@
 dataBase:
   version: "postgres:14.15-alpine"
   replicas: 2
-  host: "application-deployment-data-base-internal-service.cube-3.svc.cluster.local"
+  host: "cube-3-deployment-data-base-internal-service.cube-3.svc.cluster.local"
   dbName: "breizhsport"
   port: 5432
   username: "postgresUser"
