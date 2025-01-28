@@ -7,7 +7,7 @@ dataBase:
   username: "postgresUser"
   password: "1234"
   storage: "4Gi"
-  seed: "true"
+  seed: "false"
   authMethod: "trust"
 application:
   replicas: 2
