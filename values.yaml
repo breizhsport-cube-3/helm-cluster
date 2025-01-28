@@ -8,6 +8,7 @@ dataBase:
   password: "1234"
   storage: "4Gi"
   seed: "true"
+  authMethod: "trust"
 application:
   replicas: 2
   githubLink: "git@github.com:breizhsport-cube-3/breizhsport.git"
