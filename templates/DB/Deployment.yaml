@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: {{ .Values.dataBase.port }}
           env:
-            - name: POSTGRES_USERNAME
+            - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: data-base-secret
