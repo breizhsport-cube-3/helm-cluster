@@ -4,7 +4,7 @@ metadata:
   name: data-base-config-map
   namespace: cube-3
 data:
-  DB_HOST: "{{ .Values.dataBase.host }}"
+  DB_HOST: "<release-name>-data-base-internal-service.cube-3.svc.cluster.local"
   DB_DATABASE: "{{ .Values.dataBase.dbName }}"
   DB_PORT: "{{ .Values.dataBase.port | toString }}"
   DB_SEED: "{{ .Values.dataBase.seed }}"
