@@ -49,7 +49,7 @@ application:
 docker:
   version: "27.4.0-dind"
 ingress:
-  port: 9000
+  port: 5173
 
 nginx:
   version: "nginx:1.27.3"
