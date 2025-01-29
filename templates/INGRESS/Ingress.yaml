@@ -26,10 +26,3 @@ spec:
                 name: {{ .Release.Name }}-application-external-service
                 port:
                   number: {{ .Values.ingress.port }}
-          - path: /assets
-            pathType: Prefix
-            backend:
-              service:
-                name: breizhsport-service
-                port:
-                  number: 5173
