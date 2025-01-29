@@ -49,4 +49,4 @@ application:
 docker:
   version: "27.4.0-dind"
 ingress:
-  port: 80
+  port: 8000
