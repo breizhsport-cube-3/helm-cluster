@@ -22,8 +22,8 @@ application:
   debug: "true"
   url: "http://localhost:8000"
   frontEndUrl: "http://localhost:5173"
-  port: 8000
-  targetPort: 8000
+  port: 5173
+  targetPort: 5173
   storage: "4Gi"
   
   vite:
