@@ -20,14 +20,14 @@ application:
   dbConnection: "pgsql"
   key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
   debug: "true"
-  url: "http://0.0.0.0:8000"
-  frontEndUrl: "http://0.0.0.0:5173"
+  url: "http://localhost:8000"
+  frontEndUrl: "http://localhost:5173"
   port: 8000
   targetPort: 8000
   storage: "4Gi"
   
   vite:
-    apiUrl: "http://0.0.0.0:8000"
+    apiUrl: "http://localhost:8000"
     promotionDays: "true"
     stripePublicKey: "pk_test_51QIUcCG7OpCM0ihjdpUYiKLYNtCNxodknCEJyY8FaJxRxh1UB6zuHCwu4YBnXxQGhadgPrNKMAl9eqe9VrPErVU50066nrMNzo"
 
