@@ -23,7 +23,7 @@ application:
   url: "http://localhost:8000"
   frontEndUrl: "http://localhost:5173"
   port: 9000
-  targetPort: 9000
+  targetPort: 8000
   storage: "4Gi"
   
   vite:
