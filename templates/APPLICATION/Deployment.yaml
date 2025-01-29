@@ -23,7 +23,10 @@ spec:
           command: ["sh", "-c", "make init && php-fpm -F"]
           resources:
             limits:
-              memory: "512Mi"
+              memory: "2Gi"
+              cpu: "500m"
+            requests:
+              memory: "1Gi"
               cpu: "500m"
           env:
             - name: APP_NAME
