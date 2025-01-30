@@ -27,7 +27,7 @@ application:
   storage: "4Gi"
   
   vite:
-    apiUrl: "http://localhost:8000"
+    apiUrl: "http://breizhsport-prod.fr"
     promotionDays: "true"
     stripePublicKey: "pk_test_51QIUcCG7OpCM0ihjdpUYiKLYNtCNxodknCEJyY8FaJxRxh1UB6zuHCwu4YBnXxQGhadgPrNKMAl9eqe9VrPErVU50066nrMNzo"
 
