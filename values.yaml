@@ -20,8 +20,8 @@ application:
   dbConnection: "pgsql"
   key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
   debug: "true"
-  url: "http://localhost:8000"
-  frontEndUrl: "http://localhost:5173"
+  url: "http://breizhsport-prod.fr"
+  frontEndUrl: "http://breizhsport-prod.fr"
   port: 8000
   targetPort: 8000
   storage: "4Gi"
