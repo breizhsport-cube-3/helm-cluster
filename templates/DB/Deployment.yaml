@@ -17,6 +17,15 @@ spec:
         - name: data-base
           image: {{ .Values.dataBase.version }}
           imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "500m"
+              ephemeral-storage: "200Mi"
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+              ephemeral-storage: "100Mi"
           ports:
             - containerPort: {{ .Values.dataBase.port }}
           env:
