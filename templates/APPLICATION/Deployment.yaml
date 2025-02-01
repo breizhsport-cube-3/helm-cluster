@@ -14,9 +14,9 @@ spec:
         app: {{ .Release.Name }}-application
     spec:
       volumes:
-          - name: assets-volume
-            persistentVolumeClaim:
-              claimName: cube-3-application-storage-pvc
+        - name: assets-volume
+          persistentVolumeClaim:
+            claimName: cube-3-application-storage-pvc
       initContainers:
         - name: build-assets
           image: "breizhsport:production"
@@ -28,8 +28,12 @@ spec:
           resources:
             limits:
               memory: "2Gi"
+              cpu: "500m"
+              ephemeral-storage: "200Mi"
             requests:
               memory: "1Gi"
+              cpu: "500m"
+              ephemeral-storage: "100Mi"
           env: 
             - name: APP_NAME
               valueFrom:
