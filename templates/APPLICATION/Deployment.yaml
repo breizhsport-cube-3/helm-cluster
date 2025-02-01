@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["sh", "-c", "make init && cp -r public/build/* /var/www/public/build/ && php artisan serve --host=0.0.0.0 --port=8000"]
+          command: ["sh", "-c", "make init && php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
               memory: "2Gi"
