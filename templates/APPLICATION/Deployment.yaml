@@ -17,7 +17,7 @@ spec:
         - name: build-assets
           image: "breizhsport:latest"
           imagePullPolicy: Never
-          command: ["sh", "-c", "yarn build && cp -r public/build/* /var/www/public/build/"]
+          command: ["sh", "-c", "cd /var/www && yarn build"]
           volumeMounts:
             - name: assets-volume
               mountPath: /var/www/public/build
@@ -30,12 +30,12 @@ spec:
         - name: application-container
           volumeMounts:
             - name: assets-volume
-              mountPath: /var/www/html/public/build
+              mountPath: /var/www/public/build
           image: "breizhsport:latest"
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["sh", "-c", "make init && yarn build && cp -r public/build/* /var/www/html/public/build/ && php artisan serve --host=0.0.0.0 --port=8000"]
+          command: ["sh", "-c", "make init && cp -r public/build/* /var/www/public/build/ && php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
               memory: "2Gi"
