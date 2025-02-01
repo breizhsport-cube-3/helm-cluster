@@ -126,11 +126,11 @@ spec:
             limits:
               memory: "2Gi"
               cpu: "500m"
-              ephemeral-storage: "100Mi"
+              ephemeral-storage: "200Mi"
             requests:
               memory: "1Gi"
               cpu: "500m"
-              ephemeral-storage: "200Mi"
+              ephemeral-storage: "100Mi"
           env: 
             - name: APP_NAME
               valueFrom:
