@@ -151,16 +151,16 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_GENERATE_ALWAYS
-            - name: L5_SWAGGER_CONST_HOST
+            - name: APP_ENV
               valueFrom:
                 configMapKeyRef:
                   name: application-config-map
-                  key: L5_SWAGGER_CONST_HOST
-            - name: TRUSTED_PROXIES
+                  key: APP_ENV
+            - name: DB_SEED
               valueFrom:
                 configMapKeyRef:
-                  name: application-config-map
-                  key: TRUSTED_PROXIES
+                  name: data-base-config-map
+                  key: DB_SEED
       automountServiceAccountToken: false
       containers:
         - name: application-container
