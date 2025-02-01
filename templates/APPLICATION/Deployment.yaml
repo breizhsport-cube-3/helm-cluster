@@ -125,9 +125,11 @@ spec:
           resources:
             limits:
               memory: "2Gi"
+              cpu: "500m"
               ephemeral-storage: "100Mi"
             requests:
               memory: "1Gi"
+              cpu: "500m"
               ephemeral-storage: "200Mi"
           env: 
             - name: APP_NAME
