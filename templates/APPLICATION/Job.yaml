@@ -32,7 +32,7 @@ spec:
           cd /app/breizhsport &&
           rm docker-compose.yml &&
           echo "Old build deleted"
-          docker build -t breizhsport:latest . &&
+          docker build -t breizhsport:production . &&
           echo "Build complete"
         volumeMounts:
         - name: docker-socket
