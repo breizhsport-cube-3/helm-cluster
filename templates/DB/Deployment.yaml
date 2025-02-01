@@ -37,9 +37,9 @@ spec:
                   key: DB_HOST_AUTH_METHOD
             - name: POSTGRES_DB
               valueFrom:
-                  configMapKeyRef:
-                    name: data-base-config-map
-                    key: DB_DATABASE
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_DATABASE
           envFrom:
             - secretRef:
                 name: data-base-secret
