@@ -27,14 +27,18 @@ spec:
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-          ssh-add -l &&
+
           git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
           cd /app/breizhsport &&
           rm docker-compose.yml &&
-          docker image prune -a &&
-          echo "Old build deleted"
+
           docker build -t breizhsport:production . &&
-          echo "Build complete"
+
+          docker image prune -a -f &&
+
+          docker system prune -a --volumes -f &&
+
+          echo "Build completed"
         volumeMounts:
         - name: docker-socket
           mountPath: /var/run/docker.sock
