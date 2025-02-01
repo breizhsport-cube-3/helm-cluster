@@ -25,6 +25,11 @@ spec:
           volumeMounts:
             - name: assets-volume
               mountPath: /var/www/public/build
+          resources:
+            limits:
+              memory: "2Gi"
+            requests:
+              memory: "1Gi"
           env: 
             - name: APP_NAME
               valueFrom:
