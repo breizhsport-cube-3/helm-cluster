@@ -171,6 +171,16 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: APP_ENV
+            - name: DB_SEED
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_SEED
           command: ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
