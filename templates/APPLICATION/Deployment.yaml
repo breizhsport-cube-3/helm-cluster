@@ -41,7 +41,6 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: APP_NAME
-            
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
@@ -181,6 +180,141 @@ spec:
               memory: "1Gi"
               cpu: "500m"
           env:
+            - name: APP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: APP_NAME
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: APP_KEY
+            - name: APP_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: APP_DEBUG
+            - name: APP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: APP_URL
+            - name: VITE_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: VITE_API_URL
+            - name: VITE_PROMOTION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: VITE_PROMOTION_DAYS
+            - name: VITE_STRIPE_PUBLIC_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: VITE_STRIPE_PUBLIC_KEY
+            - name: DB_CONNECTION
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: DB_CONNECTION
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_PORT
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_DATABASE
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: data-base-secret
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: data-base-secret
+                  key: DB_PASSWORD
+            - name: FRONTEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: FRONTEND_URL
+            - name: MAIL_MAILER
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: MAIL_MAILER
+            - name: MAIL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: MAIL_HOST
+            - name: MAIL_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: MAIL_PORT
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: MAIL_USERNAME
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: MAIL_PASSWORD
+            - name: MAIL_ENCRYPTION
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: MAIL_ENCRYPTION
+            - name: MAIL_FROM_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: MAIL_FROM_ADDRESS
+            - name: MAIL_FROM_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: MAIL_FROM_NAME
+            - name: MAIL_VERIFY_PEER
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: MAIL_VERIFY_PEER
+            - name: MAIL_ALLOW_SELF_SIGNED
+              valueFrom:
+                secretKeyRef:
+                  name: application-secret
+                  key: MAIL_ALLOW_SELF_SIGNED
+            - name: L5_SWAGGER_GENERATE_ALWAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: L5_SWAGGER_GENERATE_ALWAYS
+            - name: L5_SWAGGER_CONST_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: L5_SWAGGER_CONST_HOST
+            - name: TRUSTED_PROXIES
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: TRUSTED_PROXIES
             - name: APP_ENV
               valueFrom:
                 configMapKeyRef:
