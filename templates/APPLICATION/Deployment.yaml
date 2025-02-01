@@ -17,7 +17,7 @@ spec:
         - name: build-assets
           image: "breizhsport:latest"
           imagePullPolicy: Never
-          command: ["sh", "-c", "yarn build"]
+          command: ["sh", "-c", "make init && yarn build"]
           volumeMounts:
             - name: assets-volume
               mountPath: /var/www/public/build
@@ -171,7 +171,7 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
-          command: ["sh", "-c", "make init && php artisan serve --host=0.0.0.0 --port=8000"]
+          command: ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
               memory: "2Gi"
