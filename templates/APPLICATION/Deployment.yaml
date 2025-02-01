@@ -13,14 +13,28 @@ spec:
       labels:
         app: {{ .Release.Name }}-application
     spec:
+      initContainers:
+        - name: build-assets
+          image: "breizhsport:latest"
+          command: ["sh", "-c", "make init && yarn build && cp -r public/build/* /var/www/public/build/"]
+          volumeMounts:
+            - name: assets-volume
+              mountPath: /var/www/public/build
+      volumes:
+          - name: assets-volume
+            persistentVolumeClaim:
+              claimName: cube-3-application-storage-pvc
       automountServiceAccountToken: false
       containers:
         - name: application-container
+          volumeMounts:
+            - name: assets-volume
+              mountPath: /var/www/html/public/build
           image: "breizhsport:latest"
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["sh", "-c", "make init && yarn build && php artisan serve --host=0.0.0.0 --port=8000"]
+          command: ["sh", "-c", "make init && yarn build && cp -r public/build/* /var/www/html/public/build/ && php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
               memory: "2Gi"
