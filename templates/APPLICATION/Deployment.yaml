@@ -16,6 +16,7 @@ spec:
       initContainers:
         - name: build-assets
           image: "breizhsport:latest"
+          imagePullPolicy: Never
           command: ["sh", "-c", "make init && yarn build && cp -r public/build/* /var/www/public/build/"]
           volumeMounts:
             - name: assets-volume
