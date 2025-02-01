@@ -32,11 +32,11 @@ spec:
           cd /app/breizhsport &&
           rm docker-compose.yml &&
 
-          docker build -t breizhsport:production . &&
-
           docker image prune -a -f &&
 
           docker system prune -a --volumes -f &&
+
+          docker build -t breizhsport:production . &&
 
           echo "Build completed"
         volumeMounts:
