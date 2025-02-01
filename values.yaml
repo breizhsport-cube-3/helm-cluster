@@ -1,6 +1,6 @@
 dataBase:
   version: "postgres:14.15-alpine"
-  replicas: 2
+  replicas: 1
   host: "cube-3-data-base-internal-service"
   dbName: "breizhsport"
   port: 5432
