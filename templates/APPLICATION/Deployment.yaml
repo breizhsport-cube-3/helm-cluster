@@ -160,36 +160,6 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: VITE_STRIPE_PUBLIC_KEY
-            - name: DB_CONNECTION
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: DB_CONNECTION
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_PORT
-            - name: DB_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_DATABASE
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: data-base-secret
-                  key: DB_USERNAME
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: data-base-secret
-                  key: DB_PASSWORD
             - name: FRONTEND_URL
               valueFrom:
                 configMapKeyRef:
