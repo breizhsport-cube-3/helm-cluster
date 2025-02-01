@@ -35,25 +35,13 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["sh", "-c", "make init && php artisan serve --host=0.0.0.0 --port=8000"]
-          resources:
-            limits:
-              memory: "2Gi"
-              cpu: "500m"
-            requests:
-              memory: "1Gi"
-              cpu: "500m"
-          env:
+          env: 
             - name: APP_NAME
               valueFrom:
                 configMapKeyRef:
                   name: application-config-map
                   key: APP_NAME
-            - name: APP_ENV
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_ENV
+            
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
@@ -179,13 +167,27 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
-            - name: DB_SEED
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_SEED
             - name: TRUSTED_PROXIES
               valueFrom:
                 configMapKeyRef:
                   name: application-config-map
                   key: TRUSTED_PROXIES
+          command: ["sh", "-c", "make init && php artisan serve --host=0.0.0.0 --port=8000"]
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "500m"
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: application-config-map
+                  key: APP_ENV
+            - name: DB_SEED
+              valueFrom:
+                configMapKeyRef:
+                  name: data-base-config-map
+                  key: DB_SEED
