@@ -8,6 +8,7 @@ metadata:
 spec:
   template:
     spec:
+      automountServiceAccountToken: false
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"

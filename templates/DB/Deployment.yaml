@@ -13,6 +13,7 @@ spec:
       labels:
         app: {{ .Release.Name }}-data-base
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: data-base
           image: {{ .Values.dataBase.version }}
