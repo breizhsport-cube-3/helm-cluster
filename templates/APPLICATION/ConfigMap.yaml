@@ -17,8 +17,6 @@ data:
 
   FRONTEND_URL: "{{ .Values.application.frontEndUrl }}"
 
-  TRUSTED_PROXIES: "{{ .Values.application.proxy }}"
-
   MAIL_MAILER: "{{ .Values.application.mail.mailer }}"
   MAIL_HOST: "{{ .Values.application.mail.host }}"
   MAIL_PORT: "{{ .Values.application.mail.port | toString }}"

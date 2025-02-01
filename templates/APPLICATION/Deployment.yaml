@@ -255,18 +255,3 @@ spec:
                 configMapKeyRef:
                   name: application-config-map
                   key: L5_SWAGGER_CONST_HOST
-            - name: TRUSTED_PROXIES
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: TRUSTED_PROXIES
-            - name: APP_ENV
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_ENV
-            - name: DB_SEED
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_SEED
