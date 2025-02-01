@@ -12,4 +12,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/database/breizhsport
   
