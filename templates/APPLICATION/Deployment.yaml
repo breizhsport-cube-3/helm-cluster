@@ -17,7 +17,7 @@ spec:
         - name: build-assets
           image: "breizhsport:latest"
           imagePullPolicy: Never
-          command: ["sh", "-c", "cd /var/www && yarn build"]
+          command: ["sh", "-c", "yarn build"]
           volumeMounts:
             - name: assets-volume
               mountPath: /var/www/public/build
