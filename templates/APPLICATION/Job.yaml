@@ -11,6 +11,9 @@ spec:
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
+        resources:
+          requests:
+            ephemeral-storage: "2Gi"
         env:
         - name: SSH_KEY
           valueFrom:
@@ -27,17 +30,12 @@ spec:
           ssh-add ~/.ssh/id_rsa &&
           ssh-keyscan github.com >> ~/.ssh/known_hosts &&
           apk add --no-cache git &&
-
           git clone -b {{ .Values.application.branch }} {{ .Values.application.githubLink }} /app/breizhsport &&
           cd /app/breizhsport &&
           rm docker-compose.yml &&
-
           docker image prune -a -f &&
-
           docker system prune -a --volumes -f &&
-
           docker build -t breizhsport:production . &&
-
           echo "Build completed"
         volumeMounts:
         - name: docker-socket
