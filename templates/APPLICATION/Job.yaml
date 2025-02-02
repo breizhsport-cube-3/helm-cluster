@@ -7,15 +7,6 @@ metadata:
     argocd.argoproj.io/hook: PreSync
 spec:
   template:
-    annotations:
-        # Active l'injection automatique via Vault Agent Injector
-        vault.hashicorp.com/agent-inject: "true"
-        # Indique le rôle dans Vault qui permet d'accéder aux secrets (celui créé précédemment)
-        vault.hashicorp.com/role: "sshkey"
-        # Spécifie le chemin du secret dans Vault. Dans ce cas, le secret (la clé SSH) doit se trouver à ce chemin.
-        vault.hashicorp.com/agent-inject-secret-ssh-key: "secret/breizhsport/sshkey"
-        # (Optionnel) Indique le nom du fichier dans lequel le secret sera injecté
-        vault.hashicorp.com/agent-inject-file-ssh-key: "/vault/secrets/ssh-key"
     spec:
       automountServiceAccountToken: false
       containers:
@@ -30,10 +21,15 @@ spec:
             ephemeral-storage: "2Gi"
             cpu: "500m"
             memory: "1Gi"
+        env:
+        - name: SSH_KEY
+          valueFrom:
+            secretKeyRef:
+              name: application-secret
+              key: SSH_KEY
         command: ["sh", "-c"]
         args:
         - |
-          export SSH_KEY="$(cat /vault/secrets/ssh-key)" &&
           mkdir -p ~/.ssh &&
           echo "$SSH_KEY" > ~/.ssh/id_rsa &&
           chmod 600 ~/.ssh/id_rsa &&
