@@ -7,7 +7,7 @@ dataBase:
   username: "postgresUser"
   password: "1234"
   storage: "4Gi"
-  seed: "true"
+  seed: "false"
   authMethod: "trust"
 application:
   replicas: 2
@@ -15,7 +15,7 @@ application:
   branch: "develop"
   sshKey: "LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaVwpReU5UVXhPUUFBQUNEa0lzdk0rK2hNVklOV050T3lVT3lFOWloVGUyVFVhVmVNR2JtNEFvakxlUUFBQUppNGFhRnd1R21oCmNBQUFBQXR6YzJndFpXUXlOVFV4T1FBQUFDRGtJc3ZNKytoTVZJTldOdE95VU95RTlpaFRlMlRVYVZlTUdibTRBb2pMZVEKQUFBRUM0YVZOcHhFMnR1SElZRHpBeXlKbENJUDcwd3RYenJxN0YvUGN4bUtNbVdPUWl5OHo3NkV4VWcxWTIwN0pRN0lUMgpLRk43Wk5ScFY0d1p1YmdDaU10NUFBQUFGSFJvYjIxaFFFMVpMVkJETFVkQlRVbE9SeTB5QVE9PQotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0K"
   name: "Breizhsport"
-  env: "preprod"
+  env: "production"
   dbConnection: "pgsql"
   key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
   debug: "true"
