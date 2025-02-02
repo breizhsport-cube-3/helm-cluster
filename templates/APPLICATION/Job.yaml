@@ -31,12 +31,6 @@ spec:
             ephemeral-storage: "2Gi"
             cpu: "500m"
             memory: "1Gi"
-        env:
-        - name: SSH_KEY
-          valueFrom:
-            secretKeyRef:
-              name: application-secret
-              key: SSH_KEY
         command: ["sh", "-c"]
         args:
         - |
