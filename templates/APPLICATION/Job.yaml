@@ -18,7 +18,6 @@ spec:
             export SSH_KEY="{{ .Data.data.sshkey }}"
           {{- end }}`}}
     spec:
-      serviceAccountName: sshkey
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
