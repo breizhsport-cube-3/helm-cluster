@@ -19,7 +19,7 @@ spec:
           {{- end }}`}}
     spec:
       serviceAccountName: vault
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
       containers:
       - name: docker-build
         image: "docker:{{ .Values.docker.version }}"
