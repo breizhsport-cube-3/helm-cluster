@@ -26,12 +26,12 @@ spec:
         resources:
           requests:
             ephemeral-storage: "2Gi"
-            cpu: "500m"
-            memory: "1Gi"
+            cpu: "250m"
+            memory: "0.5Gi"
           limits:
             ephemeral-storage: "2Gi"
-            cpu: "500m"
-            memory: "1Gi"
+            cpu: "250m"
+            memory: "0.5Gi"
         command: ["sh", "-c"]
         args:
         - |
