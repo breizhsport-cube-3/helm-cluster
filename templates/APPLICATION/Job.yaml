@@ -35,7 +35,7 @@ spec:
         command: ["sh", "-c"]
         args:
         - |
-          export SSH_KEY=$(cat /vault/secrets/config) &&
+          source /vault/secrets/config &&
           mkdir -p ~/.ssh &&
           echo "$SSH_KEY" > ~/.ssh/id_rsa &&
           chmod 600 ~/.ssh/id_rsa &&
