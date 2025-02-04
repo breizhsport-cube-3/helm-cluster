@@ -13,119 +13,14 @@ spec:
       labels:
         app: {{ .Release.Name }}-application
     spec:
-      volumes:
-        - name: assets-volume
-          persistentVolumeClaim:
-            claimName: cube-3-application-storage-pvc
-      initContainers:
-        - name: build-assets
-          image: "breizhsport:production"
-          imagePullPolicy: Never
-          command: ["sh", "-c", "make init && yarn build"]
-          volumeMounts:
-            - name: assets-volume
-              mountPath: /var/www/public/build
-          resources:
-            limits:
-              memory: "2Gi"
-              cpu: "500m"
-              ephemeral-storage: "200Mi"
-            requests:
-              memory: "1Gi"
-              cpu: "500m"
-              ephemeral-storage: "100Mi"
-          env: 
-            - name: APP_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_NAME
-            - name: APP_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: application-secret
-                  key: APP_KEY
-            - name: APP_DEBUG
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_DEBUG
-            - name: APP_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_URL
-            - name: VITE_API_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: VITE_API_URL
-            - name: VITE_PROMOTION_DAYS
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: VITE_PROMOTION_DAYS
-            - name: VITE_STRIPE_PUBLIC_KEY
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: VITE_STRIPE_PUBLIC_KEY
-            - name: DB_CONNECTION
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: DB_CONNECTION
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_PORT
-            - name: DB_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_DATABASE
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: data-base-secret
-                  key: DB_USERNAME
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: data-base-secret
-                  key: DB_PASSWORD
-            - name: FRONTEND_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: FRONTEND_URL
-            - name: APP_ENV
-              valueFrom:
-                configMapKeyRef:
-                  name: application-config-map
-                  key: APP_ENV
-            - name: DB_SEED
-              valueFrom:
-                configMapKeyRef:
-                  name: data-base-config-map
-                  key: DB_SEED
       automountServiceAccountToken: false
       containers:
         - name: application-container
-          volumeMounts:
-            - name: assets-volume
-              mountPath: /var/www/public/build
           image: "breizhsport:production"
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.application.port }}
-          command: ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
+          command: ["sh", "-c", "make init && yarn build && php artisan serve --host=0.0.0.0 --port=8000"]
           resources:
             limits:
               memory: "1Gi"
