@@ -7,14 +7,14 @@ dataBase:
   username: "postgresUser"
   password: "1234"
   storage: "4Gi"
-  seed: "false"
+  seed: "true"
   authMethod: "trust"
 application:
-  replicas: 2
+  replicas: 1
   githubLink: "git@github.com:breizhsport-cube-3/breizhsport.git"
   branch: "develop"
   name: "Breizhsport"
-  env: "production"
+  env: "prod-prod"
   dbConnection: "pgsql"
   key: "base64:TC0LhdUCCaPhMeFVN6l6dFn6paq6h9ChdjGpnZTRgfw="
   debug: "true"
