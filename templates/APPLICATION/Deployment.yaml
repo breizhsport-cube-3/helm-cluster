@@ -13,6 +13,7 @@ spec:
       labels:
         app: {{ .Release.Name }}-application
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: application-container
           image: "breizhsport:production"
