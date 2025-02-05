@@ -2,7 +2,7 @@ name: Code analysis
 on:
   push:  # Déclenche le workflow à chaque push sur n'importe quelle branche
     branches:
-      - 'main'  # Analyse tous les pushs sur toutes les branches
+      - '*'
 
 jobs:
   sonarqube:
